@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# César Ortiz — Portfolio Setup
 
-## Getting Started
+## Stack
+- **Next.js 15** (App Router)
+- **HeroUI v3** + **Tailwind CSS v4**
+- **next-themes** (dark/light toggle)
+- **Motion** (animaciones — siguiente paso)
+- **Lenis** (smooth scroll — siguiente paso)
 
-First, run the development server:
+---
+
+## Instalación
+
+### 1. Instalar dependencias base
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Instalar HeroUI v3
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm i @heroui/styles @heroui/react
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Instalar next-themes (para el toggle dark/light)
 
-## Learn More
+```bash
+npm i next-themes
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Instalar styled-jsx (para los estilos scoped del Navbar)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> Next.js ya incluye styled-jsx, no requiere instalación extra.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 5. Instalar librerías de animación (cuando llegues a las secciones)
 
-## Deploy on Vercel
+```bash
+npm i motion lenis
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Archivos generados
+
+```
+src/
+├── app/
+│   ├── globals.css          ← Tokens de diseño + Tailwind + HeroUI
+│   ├── layout.tsx           ← Root layout con ThemeProvider
+│   └── page.tsx             ← Página principal (placeholder)
+│
+├── components/
+│   ├── layout/
+│   │   └── Navbar.tsx       ← Navbar completo con scroll spy
+│   ├── providers/
+│   │   └── ThemeProvider.tsx ← Wrapper de next-themes
+│   └── ui/
+│       └── ThemeToggle.tsx  ← Toggle dark/light animado
+│
+next.config.ts
+tsconfig.json
+```
+
+---
+
+## Tokens de diseño (globals.css)
+
+| Variable | Light | Dark |
+|---|---|---|
+| `--bg-primary` | `#ffffff` | `#111111` |
+| `--bg-card` | `#f5f5f7` | `#2c2c2e` |
+| `--text-primary` | `#1c1c1e` | `#f5f5f7` |
+| `--text-secondary` | `#6e6e73` | `#8e8e93` |
+| `--accent` | `#2563eb` | `#3b82f6` |
+
+---
+
+## Fuentes
+
+- **Syne** — display/títulos (logo, headings)
+- **DM Sans** — cuerpo (texto, links, labels)
+
+Se cargan via Google Fonts en `globals.css`.
